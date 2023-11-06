@@ -20,14 +20,18 @@ Route::get('/roundselectdifficulty', function(){
     return view('roundselectdifficulty');
 });
 
+
+Route::post('/arcade', 'App\Http\Controllers\ArcadeController@index')->name('arcade');
+// Route::get('/dif-{difficulty}',[App\Http\Controllers\RoundController::class],'initialize');
+
 Route::get('/dif-{difficulty}', function($difficulty){
-    if($difficulty == 'easy') session(['difficulty'=>1]);
-    else if($difficulty == 'medium') session(['difficulty'=>2]);
-    else if($difficulty == 'hard') session(['difficulty'=>3]);
+    if($difficulty == 'easy') session(['difficulty'=>'easy']);
+    else if($difficulty == 'medium') session(['difficulty'=>'medium']);
+    else if($difficulty == 'hard') session(['difficulty'=>'hard']);
     return redirect('/round');
 });
 
-Route::get('/round',[App\Http\Controllers\RoundController::class,'index']);
+Route::get('/round',[App\Http\Controllers\RoundController::class, 'index']);
 
 Route::get('/shoot/{stig}', function($stig){
     $tex = "text=" . str_replace(" ","%20",$stig);
