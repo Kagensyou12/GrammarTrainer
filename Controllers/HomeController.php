@@ -12,7 +12,7 @@ class HomeController extends Controller
         session(['round'=>0]);
         session(['score'=>0]);
         session(['lives'=>0]);
-        session(['difficulty'=>'undefined']);
+        session(['difficulty'=>0]);
         session(['question'=>'']);
         session(['answer'=>'']);
 
