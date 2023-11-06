@@ -7,7 +7,7 @@ use App\Models\Question;
 
 class ArcadeController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         // if this is the first question
         if(session('game_running') == false){
             session(['game_running' => true]);
@@ -27,7 +27,11 @@ class ArcadeController extends Controller
         }
         // if this is next questions
         else{
-            $answer = session('answer');
+            $answer = $request->input('user_input'); // Get the user's input
+            session(['answer' => $answer]);// Store it in the session
+
+            // dd($answer);
+            //var_dump(session('answer'));
             // validate answer
             $valid = true;
             if(strlen($answer) < 1) $valid = false;

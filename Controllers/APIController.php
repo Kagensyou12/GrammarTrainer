@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 class APIController extends Controller
-{
+{   
     public function judge(){ // returns array of errors, still in json
-        $tex = session('answer');
+        $tex = "text=" . str_replace(" ","%20",session('answer'));  
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_URL => "https://textgears-textgears-v1.p.rapidapi.com/grammar",
@@ -26,6 +26,7 @@ class APIController extends Controller
         ]);
 
         $response = curl_exec($curl);
+        // dd($response);
         $err = curl_error($curl);
         curl_close($curl);
 
