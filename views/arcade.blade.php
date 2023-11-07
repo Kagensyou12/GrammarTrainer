@@ -12,6 +12,7 @@
         <p>Lives: {{$lives}}</p> </br>
         <p>Score: {{$score}}</p> </br>
         <p>Question text: {{$question}}</p> </br>
+        <p>{{$message}}</p> </br>
         <p>
             <form action="{{ route('arcade') }}" method="POST">
                 @csrf

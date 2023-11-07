@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcade</title>
+    <title>Round</title>
 </head>
 <body>
-    <div className="arcade-over-container">
-        <h3>{{$message}}</h3>
-        <h1>You got Score: {{$score}}</h1>
+    <div className="round-over-container">
+        <h3>Round: Game Over</h3>
+        <h1>You got Score: {{$score}} /10</h1>
         <a href="home">Back to Main Menu</a>
     </div>
 </body>
