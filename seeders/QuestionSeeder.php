@@ -15,9 +15,19 @@ class QuestionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('questions')->insert([
-            ['Question'=>'In the beningging', 'Difficulty'=>1],
-            ['Question'=>'To who it may concern', 'Difficulty'=>3]
-        ]);
+        $file = fopen('sentence_question_bank.csv', 'r');
+
+        while (($data = fgetcsv($file)) !== false) {
+            DB::table('questions')->insert([
+                'Question' => $data[0],
+                'Difficulty' => $data[1]
+            ]);
+        }
+
+        fclose($file);
+        // DB::table('questions')->insert([
+        //     ['Question'=>'In the beningging', 'Difficulty'=>1],
+        //     ['Question'=>'To who it may concern', 'Difficulty'=>3]
+        // ]);
     }
 }

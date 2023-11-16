@@ -10,9 +10,9 @@
         <div class="table">
             <table>
                 <tr>
-                    <td>Name</td> <td>Highscore</td>
+                    <td><h3>Name</h3></td> <td><h3>Highscore</h3></td>
                 </tr>
-                @forelse($parcel as $entry)
+                @forelse($leaderboard as $entry)
                 <tr>
                     <td>{{$entry->Name}}</td> <td>{{$entry->Score}}</td>
                 </tr>

@@ -13,14 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::redirect('/','/home');
-Route::get('/home',[App\Http\Controllers\HomeController::class,'index']);
-Route::get('/leaderboard',[App\Http\Controllers\LeaderboardController::class,'index']);
+Route::get('/home',[App\Http\Controllers\HomeController::class,'index'])->name('home');
+Route::get('/leaderboard',[App\Http\Controllers\LeaderboardController::class,'index'])->name('leaderboard.show');
 Route::get('/arcade',[App\Http\Controllers\ArcadeController::class,'index']);
 Route::get('/roundselectdifficulty', function(){
     return view('roundselectdifficulty');
 });
 
 
+
+Route::post('/save-score', [App\Http\Controllers\LeaderboardController::class, 'saveScore'])->name('save-score');
 Route::post('/arcade', 'App\Http\Controllers\ArcadeController@index')->name('arcade');
 Route::post('/round', 'App\Http\Controllers\RoundController@index')->name('round');
 // Route::get('/dif-{difficulty}',[App\Http\Controllers\RoundController::class],'initialize');
